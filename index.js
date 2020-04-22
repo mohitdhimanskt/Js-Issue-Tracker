@@ -27,3 +27,14 @@ document.getElementById('issueInputForm').reset();
 fetchIssue();
 e.preventDefault();
 }
+ 
+function setStatusClosed(id){
+    var issue = JSON.parse(localStorage.getItem('issues'));
+    for (var i = 0; i < issues.length; i++){
+        if(issues[i].id == id){
+            issues[i].status = 'closed';
+        }
+    }
+    localStorage.setItem('issue',JSON.stringify(issues));
+    fetchIssue();
+}
