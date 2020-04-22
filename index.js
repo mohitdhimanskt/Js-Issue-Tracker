@@ -14,5 +14,16 @@ function saveIssue(e){
         assignedTo: issueAssignedTo,
         status: issueStatus
     }
-
+if (localStorage.getItem('issues') == null){
+    var issues = [];
+    issues.push(issue);
+    localStorage.setItem('issues',JSON.stringify(issues));
+}else{
+    var issue = JSON.parse(localStorage.getItem('issues'));
+    issues.push(issue);
+    localStorage.setItem('issue',JSON.stringify(issue));
+}
+document.getElementById('issueInputForm').reset();
+fetchIssue();
+e.preventDefault();
 }
